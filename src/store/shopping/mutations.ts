@@ -1,10 +1,9 @@
 import { MutationTree } from 'vuex';
 import { ExampleStateInterface } from './state';
-// import state from './state'
 
 const mutation: MutationTree<ExampleStateInterface> = {
-  TEST(state:ExampleStateInterface,prop:boolean){
-    state.prop=prop;
+  someMutation (/* state: ExampleStateInterface */) {
+    // your code
   }
 };
 

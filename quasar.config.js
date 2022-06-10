@@ -88,10 +88,10 @@ module.exports = configure(function (ctx) {
     devServer: {
       proxy: {
         '/api': {
-          target: 'http://202.193.53.235:8080',
+          target: 'https://www.fastmock.site/mock/b6179d2b43fbb861c6d88371e8483750/test',
           pathRewrite: {'^/api': ''},
           // ws: true, //用于支持websocket,默认值为true
-          // changeOrigin: true //用于控制请求头中的host值,默认值为true
+          changeOrigin: true //用于控制请求头中的host值,默认值为true
         }
       },
       /*server: {
