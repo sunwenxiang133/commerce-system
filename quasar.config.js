@@ -33,7 +33,7 @@ module.exports = configure(function (ctx) {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-webpack/boot-files
     boot: [
-      
+
       'axios',
     ],
 
@@ -52,13 +52,14 @@ module.exports = configure(function (ctx) {
       // 'line-awesome',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
-      'roboto-font', // optional, you are not bound to it
-      'material-icons', // optional, you are not bound to it
+      //'roboto-font', // optional, you are not bound to it
+      //material-icons', // optional, you are not bound to it
+      'bootstrap-icons',
     ],
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-build
     build: {
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
 
       // transpile: false,
       // publicPath: '/',
@@ -83,12 +84,21 @@ module.exports = configure(function (ctx) {
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-devServer
+
     devServer: {
-      server: {
-        type: 'http'
+      proxy: {
+        '/api': {
+          target: 'http://202.193.53.235:8080',
+          pathRewrite: {'^/api': ''},
+          // ws: true, //用于支持websocket,默认值为true
+          // changeOrigin: true //用于控制请求头中的host值,默认值为true
+        }
       },
-      port: 8080,
-      open: true // opens browser window automatically
+      /*server: {
+        type: 'http'
+      },*/
+      // port: 8080,
+      // open: true // opens browser window automatically
     },
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-framework
